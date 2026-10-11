@@ -59,7 +59,13 @@
 
       <aside id="station" class="hidden">
         <header>
-          <button id="station-back" class="back-btn">← <span data-t="back"></span></button>
+          <div class="station-top">
+            <button id="station-back" class="back-btn">← <span data-t="back"></span></button>
+            <button id="station-explain" class="explain-btn" data-state="idle">
+              <span class="ex-face"><img src="/buddy-joy.png" alt="" /></span>
+              <span id="explain-label" data-t="explain"></span>
+            </button>
+          </div>
           <h2 id="station-title"></h2>
         </header>
         <div class="station-scroll">

@@ -6,7 +6,8 @@ import { L, t } from '../core/i18n';
 import type { AreaId, Expression, Gesture, L10n } from '../core/types';
 import type { Sfx } from '../core/sfx';
 import type { VoiceApi, VoiceHost } from './types';
-import { BrowserSpeech, estimateMs } from './browserSpeech';
+import { estimateMs } from './browserSpeech';
+import { CloudSpeech } from './cloudSpeech';
 import { offlineReply } from './offline';
 import { EXPRESSIONS, GESTURES, buildInstructions } from '../../server/buddyPersona';
 
@@ -66,10 +67,15 @@ export class BuddyVoice implements VoiceApi {
   private buddyToken = 0;
 
   private ctxTimer = 0;
-  private speech: BrowserSpeech;
+  private speech: CloudSpeech;
+  /** Called once when the current explanation has been spoken (or stopped). */
+  private explainDone: (() => void) | null = null;
+  private explainTimer = 0;
+  /** Realtime explain: only an output stop *after* the explanation's audio started means it's done. */
+  private explainSpeaking = false;
 
   constructor(private host: VoiceHost, private sfx: Sfx) {
-    this.speech = new BrowserSpeech(sfx);
+    this.speech = new CloudSpeech(sfx);
   }
 
   get active() {
@@ -412,11 +418,13 @@ export class BuddyVoice implements VoiceApi {
         break;
       case 'output_audio_buffer.started':
         this.outputPlaying = true;
+        if (this.explainDone) this.explainSpeaking = true;
         break;
       case 'output_audio_buffer.stopped':
       case 'output_audio_buffer.cleared':
         this.outputPlaying = false;
         this.hideIfMine(this.buddyToken, 2500);
+        if (this.explainSpeaking && this.activeResponses === 0) this.endExplain();
         break;
       case 'response.function_call_arguments.done':
         if (ev.call_id && ev.name) this.onCall(ev.call_id, ev.name, ev.arguments ?? '{}');
@@ -620,11 +628,67 @@ export class BuddyVoice implements VoiceApi {
     this.say(t(line), this.host.lang());
   }
 
-  /** Offline speech + subtitles. */
-  private say(text: string, lang: 'sv' | 'en') {
-    const token = this.sub('buddy', text, estimateMs(text) + 2500);
-    this.speech.onEnd = () => this.hideIfMine(token, 1500);
+  /** Everyday speech (cloud voice, or browser speech as a fallback) with subtitles that follow each clip. */
+  private say(text: string, lang: 'sv' | 'en', onDone?: () => void) {
+    let token = 0;
+    this.speech.onClip = (clip) => {
+      token = this.sub('buddy', clip, estimateMs(clip) + 6000);
+    };
+    this.speech.onEnd = () => {
+      this.hideIfMine(token, 1500);
+      onDone?.();
+    };
     this.speech.speak(text, lang);
+  }
+
+  /** Warm the voice cache for a line that will probably be spoken soon. */
+  prefetch(line: L10n): void {
+    if (!this._active) this.speech.preload(t(line), this.host.lang());
+  }
+
+  /**
+   * Buddy explains the focused station. `text` is the station's own explanation (current language).
+   * In a live conversation the model explains it in its own words (so follow-up questions work);
+   * otherwise Buddy reads it in the everyday voice. `done` fires when it has finished or was stopped.
+   */
+  explain(title: string, text: string, done: () => void): void {
+    this.stopSpeaking();
+    this.explainDone = done;
+    clearTimeout(this.explainTimer);
+    if (this._active) {
+      const lang = this.host.lang() === 'sv' ? 'Swedish (svenska)' : 'English';
+      this.requestResponse({
+        tool_choice: 'none',
+        instructions:
+          `${this.instructions()}\n\n# Right now\nThe visitor pressed "Explain" at the station "${title.replace(/"/g, "'")}". ` +
+          `Explain it simply and correctly in ${lang}, in 3–5 short spoken sentences: what happens, why (the real science), ` +
+          `and one everyday example. End with a tiny challenge to try at the station. Background (accurate facts to use):\n` +
+          text.slice(0, 3000),
+      });
+      this.explainTimer = window.setTimeout(() => this.endExplain(), 60_000);
+      return;
+    }
+    this.say(text, this.host.lang(), () => this.endExplain());
+  }
+
+  /** Stop whatever Buddy is saying right now. */
+  stopSpeaking(): void {
+    if (this._active) {
+      if (this.activeResponses > 0) this.send({ type: 'response.cancel' });
+      if (this.outputPlaying) this.send({ type: 'output_audio_buffer.clear' });
+    } else {
+      this.speech.cancel();
+      this.host.ui.subtitleHide(300);
+    }
+    this.endExplain();
+  }
+
+  private endExplain() {
+    clearTimeout(this.explainTimer);
+    this.explainSpeaking = false;
+    const d = this.explainDone;
+    this.explainDone = null;
+    d?.();
   }
 
   contextChanged(): void {

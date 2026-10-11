@@ -34,6 +34,8 @@ export const S = {
   atriumSub: L('Foucaults pendel och entrén', "Foucault's pendulum and the entrance"),
   explore: L('Utforska', 'Explore'),
   back: L('Tillbaka', 'Back'),
+  explain: L('Förklara', 'Explain'),
+  stopExplain: L('Stoppa', 'Stop'),
   howTo: L('Gör så här', 'How to'),
   science: L('Vetenskapen bakom', 'The science'),
   wow: L('Visste du?', 'Did you know?'),
@@ -66,6 +68,7 @@ export class UI {
   onTeleport: ((id: RoomId | 'atrium') => void) | null = null;
   onExplore: (() => void) | null = null;
   onBack: (() => void) | null = null;
+  onExplain: (() => void) | null = null;
   onTalkToggle: (() => void) | null = null;
   onSendText: ((text: string) => void) | null = null;
   onJoystick: ((x: number, y: number, active: boolean) => void) | null = null;
@@ -104,6 +107,10 @@ export class UI {
       $('#btn-mute').textContent = this.sfx.muted ? '🔇' : '🔊';
     });
     $('#station-back').addEventListener('click', () => this.onBack?.());
+    $('#station-explain').addEventListener('click', () => {
+      this.sfx.click();
+      this.onExplain?.();
+    });
     this.prompt.addEventListener('click', () => this.onExplore?.());
     $('#talk-btn').addEventListener('click', () => this.onTalkToggle?.());
     const form = $<HTMLFormElement>('#chat-form');
@@ -128,6 +135,7 @@ export class UI {
         else if (this.currentStation) this.onBack?.();
       }
       if (e.code === 'KeyM') this.toggleMap();
+      if (e.code === 'KeyX' && this.currentStation) this.onExplain?.();
       if (e.code === 'Enter') {
         e.preventDefault();
         $<HTMLInputElement>('#chat-input').focus();
@@ -313,6 +321,15 @@ export class UI {
         this.cleanupControls = typeof r === 'function' ? r : null;
       });
     }
+  }
+
+  /** Explain button state: idle ("Förklara") or playing ("Stoppa"). */
+  setExplaining(on: boolean) {
+    const b = $('#station-explain');
+    b.dataset.state = on ? 'playing' : 'idle';
+    const label = $('#explain-label');
+    label.dataset.t = on ? 'stopExplain' : 'explain';
+    label.textContent = t(on ? S.stopExplain : S.explain);
   }
 
   closeStation() {

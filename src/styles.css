@@ -195,6 +195,21 @@ body.focused #subtitle { left: calc((100vw - 420px) / 2); }
 @keyframes slide-in { from { transform: translateX(30px); opacity: 0; } }
 #station header { padding: 14px 18px 8px; border-bottom: 1px solid var(--line); }
 #station h2 { font-family: var(--display); font-size: 26px; line-height: 1.1; margin: 6px 0 4px; }
+.station-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.explain-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 40px; padding: 0 16px 0 4px; border-radius: 999px;
+  border: 1px solid rgba(94,230,214,0.6);
+  background: linear-gradient(135deg, rgba(30, 90, 84, 0.95), rgba(36, 28, 50, 0.95));
+  font-family: var(--display); font-weight: 800; font-size: 16px;
+  box-shadow: 0 0 18px rgba(94,230,214,0.3);
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+.explain-btn:hover { transform: scale(1.04); box-shadow: 0 0 26px rgba(94,230,214,0.55); }
+.explain-btn .ex-face { width: 32px; height: 32px; border-radius: 50%; background: #0c1715; overflow: hidden; display: grid; place-items: center; }
+.explain-btn .ex-face img { width: 40px; margin-top: 14px; }
+.explain-btn[data-state='loading'] { opacity: 0.8; }
+.explain-btn[data-state='playing'] { border-color: var(--pink); box-shadow: 0 0 24px rgba(255,122,182,0.5); animation: listen 1.4s ease-in-out infinite; }
 .back-btn { background: rgba(255,255,255,0.07); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font-weight: 700; font-size: 14px; }
 .station-scroll { overflow-y: auto; padding: 12px 18px 18px; flex: 1; touch-action: pan-y; }
 .intro { font-size: 16px; line-height: 1.45; color: #ffe6c4; margin: 4px 0 12px; }

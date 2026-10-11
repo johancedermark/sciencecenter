@@ -39,4 +39,10 @@ export interface VoiceApi {
   narrate(line: L10n): void;
   /** Tell the model the context changed (new room, new station). */
   contextChanged(): void;
+  /** Buddy explains the focused station; `done` fires when finished or stopped. */
+  explain(title: string, text: string, done: () => void): void;
+  /** Stop whatever Buddy is saying. */
+  stopSpeaking(): void;
+  /** Warm the everyday-voice cache for a line that will probably be spoken soon. */
+  prefetch(line: L10n): void;
 }

@@ -1,0 +1,384 @@
+{
+  "foucault": {
+    "en": {
+      "text": "You pull the brass bob and let it go, and the pendulum swings back and forth while knocking over the pegs one by one. It keeps swinging in the same direction in space, but the Earth turns underneath it, so the swing looks like it is turning. That is the Coriolis effect, and the amount of turning depends on where you stand on Earth. It is a bit like watching a ball stay aimed one way while the floor beneath it moves. Try starting a new swing, speed up time, and watch which way the swing plane turns.",
+      "hash": "ae099628afa5cdd8"
+    },
+    "sv": {
+      "text": "Här ser du kulan svänga fram och tillbaka och välta pinnarna en efter en. Det händer för att pendeln vill fortsätta åt samma håll i rymden, medan jorden snurrar under den. Därför ser det ut som om svängplanet vrider sig, och i Stockholm går det medurs ungefär tolv komma nio grader i timmen. Det är lite som att golvet sakta vrids under en sak som fortsätter rakt fram. Dra i kulan igen och släpp, och försök följa vilket håll planet vrider sig när du spolar fram tiden.",
+      "hash": "83b220859e8c4769"
+    }
+  },
+  "welcome": {
+    "sv": {
+      "text": "Här kan du bläddra på skärmen och göra quizet, så hjälper jag dig att välja ett rum att börja i. Gnistan har sju rum runt atriet, och varje experiment går att ändra på, så det finns alltid mer än ett svar att upptäcka. Du lär dig mest när du själv ställer frågan, gissar först och testar sedan, och då är det helt okej att ha fel. Det är lite som att undra vad som händer om du vrider på något hemma och ser efter istället för att bara tro. Prova nu: gör quizet här intill och se vilket rum jag föreslår.",
+      "hash": "4d5051881fdcae34"
+    },
+    "en": {
+      "text": "Here you can click the screen to flip through information, take the quiz, and I will suggest a room to start with. This works well because you learn most when you ask a question, make a guess, and then test what happens yourself. If your guess is wrong, that is still part of science, not a failure. It is like wondering what will happen if you try a new route or change one thing in a game, then seeing what really changes. Try the quiz now, guess first, and then check whether your answer was right.",
+      "hash": "832c6ec9859ae30a"
+    }
+  },
+  "electricity-generator": {
+    "sv": {
+      "text": "Här gör du el med din egen arm när du vevar runt handtaget och väljer hur tungt det ska kännas. Inne i generatorn snurrar en magnet mellan spolarna, och då ändras det magnetiska flödet så att en spänning bildas och strömmen byter riktning varje halvvarv. Det tunga motståndet du känner är energin som lämnar din arm, och utan last går veven lätt eftersom ingen ström flyter. En LED-lampa kan lysa lika starkt som en gammal glödlampa med mycket mindre effekt, därför känns glödlampan mycket tyngre att driva. Testa att släppa veven och se hur fort den stannar, och jämför sedan med olika belastningar.",
+      "hash": "ee39222e204cde7f"
+    },
+    "en": {
+      "text": "You turn the handle and make electricity with your own arm, then you can try to light the old bulb or the LED. Inside, a magnet spins between coils, and as it spins faster the voltage grows, then flips direction every half turn, so the current is alternating. When current flows, it makes a magnetic field that pushes back, so the crank feels heavy and your arm gives the energy. It is a bit like turning a bike dynamo, where your motion becomes electric power. Try different loads, and see whether you can make the old bulb glow as brightly as the LED.",
+      "hash": "5f6fa18654267b66"
+    }
+  },
+  "electricity-faraday": {
+    "en": {
+      "text": "Here you can drag a magnet in and out of a coil and watch the needle move, then flip the magnet and drop it through the tubes. The current appears when the magnetic field through the coil changes, not when the magnet just sits still. Moving in and out gives opposite directions, and faster motion or more turns gives more current. This is a bit like eddy-current brakes in roller coasters and trains, where the moving magnet makes the metal push back and turn motion into heat. Try the coil one more time and see if you can make the needle swing the other way by changing the magnet’s motion or flipping it.",
+      "hash": "56675f898873448c"
+    },
+    "sv": {
+      "text": "När du drar magneten in och ut ur spolen rör sig nålen, och när du släpper en magnet i röret bromsas den. Det är inte magneten i sig som skapar ström, utan förändringen i magnetfältet. Står magneten still blir det inget, men snabbare rörelse, fler varv eller att vända magneten ger mer ström. I kopparröret blir magneten bromsad av virvelströmmar och tar 5,0 sekunder genom 50 centimeter, men i plaströret faller den fritt på 0,3 sekunder. Samma sorts broms används i berg- och dalbanor och tåg. Prova att vända magneten och jämför sedan hur nålen och farten ändras när du rör den snabbare eller långsammare.",
+      "hash": "3b22420a273d9212"
+    }
+  },
+  "electricity-solar": {
+    "sv": {
+      "text": "Här kan du ta isär en solpanel och se hur lagren samarbetar när ljus träffar den. När en foton har tillräckligt med energi kan den slå loss en elektron i kisel, och då hjälper det inbyggda elfältet till att skicka elektronen och hålet åt olika håll så att ström uppstår. En blå foton ger inte mer ström än en röd, och snett ljus ger mindre ström eftersom det sprids över en större yta. Ungefär som när solljuset på en fönsterbräda ger mer kraft rakt på än när det kommer från sidan. Prova att flytta lampan, byta färg och se vilket ljus som ger mest ström.",
+      "hash": "ad617e8edb228bf9"
+    },
+    "en": {
+      "text": "Here, you take the solar module apart and shine different light at it to see what the layers do. If a photon has enough energy, it can knock an electron loose in the silicon, and the built in field guides the electron and the hole so current can flow. Light that is too weak or too long in wavelength passes straight through, and blue light does not make more current than red light if the red light has the same watts. It is a bit like rain on a roof, where slanted rain spreads out over a bigger area and does less work on each spot. Try the lamp in different colours and angles, then take it apart and see which layers help the light become current.",
+      "hash": "aecd39f0824a57fb"
+    }
+  },
+  "electricity-lemon": {
+    "sv": {
+      "text": "Här ser du hur en citron kan hjälpa till att tända en LED när zink och koppar kopplas genom citronsaften. Det händer för att zinken lämnar ifrån sig elektroner, och vätejoner i citronsaften tar emot dem vid kopparn. Citronens saft är mest som en väg för jonerna, medan zinken långsamt förbrukas och ger energin. En enda citron ger för lite spänning, så en röd LED brukar behöva tre till fyra citroner i serie. Testa själv att lägga till eller ta bort citroner och se när lampan börjar lysa!",
+      "hash": "b038a1510eae6da6"
+    },
+    "en": {
+      "text": "Here you can click in more lemons, change the electrodes, and close the knife switch to try to light the LED. The zinc in the lemon gives up electrons, and those electrons travel through the wire to the copper. Inside the lemon, the juice is only the electrolyte that lets ions move, so the lemon itself is not the fuel. It is a bit like a tiny power source that slowly uses up the zinc, just as charging a phone would need far more than one lemon. Try adding three or four lemons in series and see when the LED starts to glow.",
+      "hash": "4e4399de74f1ea45"
+    }
+  },
+  "electricity-human": {
+    "sv": {
+      "text": "När du lägger händerna på de två metallplattorna kan nålen börja röra sig. Det händer för att två olika metaller och en saltlösning bildar ett batteri, och här är saltlösningen svetten på din hud. Aluminium lämnar ifrån sig elektroner och koppar tar emot dem, så en liten ström går genom mätaren och din kropp. Med fuktiga händer blir hudens motstånd mycket lägre, så strömmen blir större. Det är därför ett litet stick kan kännas om du biter i aluminiumfolie med en metallfyllning i tanden. Prova torra och fuktiga händer, och byt metall på den högra plattan för att se vad som händer.",
+      "hash": "fa4df3efe58b4c41"
+    },
+    "en": {
+      "text": "Put your hands on the two metal plates and you can help make the needle move. This happens because two different metals and the salty sweat on your skin make a battery. The aluminium gives away electrons and the copper takes them, so a tiny current flows through the meter and through your body. It is a bit like biting aluminium foil near a metal filling and feeling a little zing, because saliva can act like the salty liquid too. Try dry hands, wet hands, and then change the metal on the right plate to see how the reading changes.",
+      "hash": "4e7da4638521d6ac"
+    }
+  },
+  "light-prism": {
+    "en": {
+      "text": "Here, you turn the prism and watch white light spread into a spectrum of colours. That happens because light slows down in glass, and violet bends a little more than red, so each colour leaves the prism at a different angle. The prism does not add colour, it only sorts the colours already in the white light. A rainbow works the same way, with billions of raindrops acting like tiny prisms in the sky. Try to find the minimum deviation, then switch glass and compare what the second prism does.",
+      "hash": "f525b6ff883aa0d2"
+    },
+    "sv": {
+      "text": "När du vrider prismat ser du hur vitt ljus delas upp i färger. Det händer för att ljus saktar in i glas, och olika färger bryts olika mycket. Prismat skapar ingen ny färg, det sorterar bara färgerna som redan finns i ljuset. En regnbåge fungerar likadant, där många regndroppar blir som små prismor. Prova att hitta minsta avböjningen, byt glassort och testa det andra prismat.",
+      "hash": "a691e5812c449672"
+    }
+  },
+  "light-shadows": {
+    "en": {
+      "text": "Move the ball in front of the white wall, and turn the lamps on, off, or move them around. The wall sends back the light that reaches it, so where all three lamps shine, red, green and blue add up to white. The ball blocks one lamp at a time, so you can see cyan, magenta, or yellow shadows, and where all three shadows meet it looks black. This is additive colour mixing, which is different from paint. Try making two shadows overlap and see which colour is left.",
+      "hash": "2032dff153982441"
+    },
+    "sv": {
+      "text": "Här ser du hur en boll kan göra skuggor i cyan, magenta och gult när lamporna tänds och släcks. Det händer för att den vita väggen skickar tillbaka ljuset, och när rött, grönt och blått ljus blandas blir det vitt. Bollen stoppar en lampa i taget, så där rött saknas blir det cyan, där grönt saknas blir det magenta och där blått saknas blir det gult. Det är så din mobilskärm också skapar färger med röda, gröna och blå små lampor. Prova nu att flytta bollen och se om du kan få två skuggor att överlappa och hitta platsen där alla tre möts.",
+      "hash": "e9def2c23fbdd6d4"
+    }
+  },
+  "light-lens": {
+    "sv": {
+      "text": "Här kan du dra linsen och skärmen tills lågan blir skarp på skärmen. Linsen böjer ljuset så att strålarna möts bakom den och bildar en bild som blir upp och ner. Det är därför skärmen måste stå på rätt avstånd, annars blir bilden suddig. Precis så fungerar också ditt öga, som gör en upp och ner-bild på näthinnan som hjärnan vänder rätt. Testa att byta lins och se vilken som ger skarpast bild lättast.",
+      "hash": "4c97e4a8861a0c7a"
+    },
+    "en": {
+      "text": "You drag the lens and the screen along the rail until the flame becomes sharp on the screen. That happens because a converging lens bends the light from each point of the flame so the rays meet again behind the lens. If the screen is too close or too far, the rays meet before or after it, and the picture turns blurry. Your eye does something similar, making an upside down image on your retina, and your brain flips it for you. Try switching lenses and see which distance makes the flame sharpest, then compare how the picture changes.",
+      "hash": "d3529943487b7775"
+    }
+  },
+  "light-polariser": {
+    "en": {
+      "text": "You can turn the back filter, and when the two filters cross, the light can fade until it goes dark. That happens because light wiggles in many directions, and a polarising filter only lets one direction through. If you add a middle filter turned halfway, it can let some light through step by step. This is like some phone and computer screens, where filters and liquid crystals work together to control the light, and polarised sunglasses can make a screen look black when you tilt your head. Try crossing the filters, then slip the middle one in and see how the light changes.",
+      "hash": "b17b0ddeafd1a67a"
+    },
+    "sv": {
+      "text": "Här vrider du det bakre filtret och kan korsa filtren, och när du sätter in mittfiltret förändras ljuset igen. Det händer eftersom ljus svänger åt alla håll, men ett polarisationsfilter släpper bara igenom svängning längs sin axel. När filtren står rakt mot varandra blir det mörkt, och med ett filter i fyrtiofem grader emellan går bara en åttondel av ljuset igenom. Det är lite som när polariserade solglasögon dämpar blänk från vatten och vägbana. Prova att vrida filtret långsamt och se när bilden blir mörkast!",
+      "hash": "b9d68c03596cf42e"
+    }
+  },
+  "light-fibre": {
+    "en": {
+      "text": "You shine a laser into water or a bent glass rod and watch the light stay inside as you change the angle and the bend. This happens because when light in water or glass reaches air, it bends away from the normal, and if the angle is large enough it reflects back inside instead of escaping. The light then bounces along in straight lines between each hit, so it follows the curve of the water jet or glass rod. That is a bit like the glass fibres that carry internet signals, even under the sea between continents. Try aiming the laser more steeply or making the bend tighter and see when the light starts to leak out.",
+      "hash": "9caf1c9d72c86584"
+    },
+    "sv": {
+      "text": "Här ser du hur en laser kan följa med i en vattenstråle eller en böjd glasstav när ljuset studsar inuti. När ljuset når gränsen mot luft böjs det bort från normalen, och om vinkeln är större än gränsvinkeln blir det totalreflektion så att ljuset stannar kvar. Det är därför ljuset kan följa kurvan, men om du vinklar för brant eller böjer för skarpt läcker det ut. Samma sak används i glasfibrer som är tunnare än ett hårstrå, och i kablar på havsbotten som bär nästan all trafik mellan kontinenterna. Prova själv att ändra vinkeln, vattnets fart eller böjen och se när ljuset håller sig kvar.",
+      "hash": "a8e1d93ef1f28e91"
+    }
+  },
+  "sound-chladni": {
+    "en": {
+      "text": "You make the plate vibrate, and the sand can gather into sharp lines all by itself. At certain frequencies, the plate forms a standing wave, and the still lines are called nodal lines, so the sand is thrown off the moving parts and left where the plate is still. It is a bit like a rope that seems frozen in a wave pattern when it is shaken just right. Between those special frequencies, the plate shakes in a jumble and the sand spreads out again. Try slowly changing the frequency or dragging the bow until you find a pattern with clean lines.",
+      "hash": "ed62364223cc2a18"
+    },
+    "sv": {
+      "text": "När du drar i frekvensen eller stryker med stråken börjar plattan svänga, och sanden samlar sig till skarpa linjer. Det händer vid vissa frekvenser som kallas resonanser, då plattan bildar en stående våg. Där plattan står still blir det nodlinjer, och sanden kastas bort från de delar som rör sig. Som när en gunga bara tar fart om du puttar i rätt rytm. Prova att leta efter den frekvens där mönstret blir tydligast, och se hur sanden flyttar sig när du ändrar lite grann.",
+      "hash": "27603cad94d684fe"
+    }
+  },
+  "sound-string": {
+    "en": {
+      "text": "When you shake the string at just the right frequency, it swings strongly and can look as if it stands still. This happens because waves bounce off the ends, and when the right number of half waves fits on the string, the returning waves reinforce each other. What you see is really two waves moving in opposite directions, with some points staying still and others swinging the most. A guitar string does this too, and its mix of harmonics helps make it sound different from a piano, even on the same note. Try changing the frequency or the tension, and see if you can find the standing wave again.",
+      "hash": "7505944fa7cad77b"
+    },
+    "sv": {
+      "text": "När du skakar strängen med rätt frekvens kan den se ut att stå alldeles stilla, fast den svänger kraftigt. Det beror på att vågen studsar mellan ändarna och att framåtgående och tillbakagående vågor förstärker varandra när en hel rad halva våglängder får plats på strängen. Det är lite som en gitarrsträng som klingar i grundton och övertoner samtidigt, och det är därför olika instrument kan låta olika fast de spelar samma ton. Här kan du ändra frekvensen och spänningen tills strängen börjar svara starkt, eller dra i den och släppa som på en gitarr. Prova att hitta läget där strängen nästan står stilla, och lägg sedan lätt fingret mitt på strängen för att höra hur ljudet ändras.",
+      "hash": "0304934e87488e44"
+    }
+  },
+  "sound-scope": {
+    "sv": {
+      "text": "När du pratar, sjunger eller visslar här ser du hur ljudet rör sig som vågor i luften. Den övre delen visar trycket över tid, och den nedre visar vilka frekvenser ljudet består av. En ren ton har bara en frekvens, medan andra ljud kan innehålla flera toner på samma gång. Det är som när en enda visselpipa låter rent, men en rikare ton kan likna flera ljud ovanpå varandra. Prova att spela olika toner och jämför dem, och se hur högt du kan höra med hörselsvepet.",
+      "hash": "b58652a9bc7614d2"
+    },
+    "en": {
+      "text": "Here you can talk, sing, whistle, or play tones and watch your voice turn into a picture on the screen. The top shows how air pressure changes over time, and the bottom shows which frequencies make up the sound. A pure sine tone has just one frequency, while square and sawtooth tones contain more frequencies too. It is a bit like hearing a song and then seeing its shape, or noticing that some people can hear higher tones than others as they age. Try the hearing sweep and see how high you can hear, then compare sine, square, and sawtooth tones.",
+      "hash": "d8b2a4905824ce76"
+    }
+  },
+  "sound-doppler": {
+    "en": {
+      "text": "Here you can listen as an ambulance drives past and compare how the sound changes when you change its speed. The siren sends out wave crests at a steady rate, but the car moves between each crest, so the waves bunch up in front and spread out behind it. That means more crests reach you each second in front of the car, so the pitch sounds higher, and lower behind it. It is a bit like a train whistle or a passing car sounding different as it goes by. Try changing the speed and watching the wave fronts, then click the car to run it again.",
+      "hash": "4e5288d9a7e4b28a"
+    },
+    "sv": {
+      "text": "När ambulansen kommer mot dig låter sirenen ljusare, och när den kör bort låter den mörkare. Det händer för att vågtopparna skickas ut med jämn takt, men bilen hinner köra en bit mellan varje topp. Framför bilen trängs topparna ihop så fler hinner fram till ditt öra varje sekund, och bakom bilen glesnar de. Det är som när du står vid vägen och hör en ambulans köra förbi. Testa att ändra farten och lyssna igen, och titta på hur vågfronterna ändras framför och bakom bilen.",
+      "hash": "c1dc084bfd228927"
+    }
+  },
+  "sound-rubens": {
+    "en": {
+      "text": "You switch on the speaker and change the sound until the flames make tall peaks and low valleys. This happens because the speaker sends pressure waves into the tube, and they bounce back and meet so that at certain notes a standing wave forms. Where the pressure changes most, the gas is pushed out in bursts and the flames grow tall, and where the pressure stays steady, the flames stay low. It is a bit like music making a drumhead or a rope move in certain patterns. Try finding the note where the peaks line up, and see if you can measure the space between two tall flames with your eye.",
+      "hash": "91893b00a8e9051c"
+    },
+    "sv": {
+      "text": "Här blåser högtalaren in tryckvågor i röret, och när du väljer rätt frekvens bildar lågorna höga toppar och låga dalar. Det händer för att vågorna studsar mot den stängda änden och möts, så att det bildas en stående våg. Där trycket svänger mest pressas gasen ut i stötar och lågorna blir högst, och där trycket står still blir de låga. Det är som när musik får något att vibrera tydligt på rätt ton. Prova att ändra frekvensen och leta efter resonanserna, och se om du kan hitta två höga lågor som ligger en halv våglängd ifrån varandra.",
+      "hash": "913497471f1854f9"
+    }
+  },
+  "motion-brachistochrone": {
+    "en": {
+      "text": "Here you bet on which ball will reach the finish first, then you release them and watch the race. The fastest path is the cycloid, because it drops steeply at first, so the ball gains speed early and keeps more of that speed along the way. The straight ramp is shorter but slower, and the deep dive loses time by going too far down and then climbing back up. This is like a bicycle rolling over a bumpy road: getting speed early can matter more than taking the shortest route. Try betting, then start the cycloid ball halfway down and see that it still reaches the bottom in the same time.",
+      "hash": "7a6d9a7da89ab696"
+    },
+    "sv": {
+      "text": "Här får du se tre kulor på tre banor med samma start och samma mål, och du kan gissa vilken som kommer först. Den snabbaste vägen är en cykloid, för den går brant ner först så kulan får hög fart tidigt och kan använda den resten av vägen. Den raka rampen är kortast men långsammast, och den djupa banan går för långt ner och måste klättra upp igen. Tänk som när du väljer mellan en brant backe och en längre, flackare väg. Prova att satsa, släppa kulan eller starta cykloidkulan halvvägs ner och se vad som händer.",
+      "hash": "aeb0d5a50d929020"
+    }
+  },
+  "motion-pendulum-wave": {
+    "sv": {
+      "text": "Här hänger femton pendlar som inte sitter ihop, men när du drar i spaken börjar de i takt och visar ormar, rader och kaos. Det händer för att en kortare pendel svänger fortare än en längre, så de glider isär lite i taget och blir sedan lika igen. Efter trettio sekunder kan det se ut som två rader, och efter sextio sekunder är alla i takt igen. Det är lite som när många människor går i samma takt först, men sedan råkar komma ur steg och hittar tillbaka. Prova att byta fart eller hoppa i cykeln och se när mönstren ändras.",
+      "hash": "95f8e0c5854d251d"
+    },
+    "en": {
+      "text": "Here, you start fifteen pendulums together and watch them drift into snakes, rows, and even seeming chaos. That happens because each pendulum swings at its own speed, and a shorter one swings faster, so the different lengths slowly slip out of step and then line up again. The pendulums do not push or pull each other at all, and their period depends on length and gravity, not on how heavy the bob is. That is why pendulums helped keep time in clocks for almost 300 years. Try starting them in sync, then change the speed and see if you can catch the moment when they all come back together.",
+      "hash": "54d5f465440a7acf"
+    }
+  },
+  "motion-cradle": {
+    "en": {
+      "text": "You pull one steel ball aside and let it go, and the ball on the far side flies out. When the balls collide, momentum and almost all of the kinetic energy are passed along, so the motion has to come out in the only way that fits both rules. That is why one ball leaves at about the same speed and two balls do not come out together. You can see a bit of the same idea in a row of objects, where a push moves through the middle faster than the pieces can move. Try releasing one ball, then two, or one from each side, and watch how the cradle responds.",
+      "hash": "b0a95a528f267861"
+    },
+    "sv": {
+      "text": "När du drar ut en kula och släpper flyger exakt en kula ut på andra sidan, och drar du ut två kommer två ut. Det händer för att både rörelsemängden och nästan all rörelseenergi bevaras när kulorna krockar. Bara om lika många kulor flyger ut med samma fart stämmer båda de reglerna samtidigt. Stöten går som en våg genom mittenkulorna, som nästan inte rör sig alls. Prova att släppa en kula från varje sida, eller två plus en, och se om du kan förutsäga vad som händer.",
+      "hash": "8d26380461aa5468",
+      "edited": true
+    }
+  },
+  "motion-loop": {
+    "en": {
+      "text": "You drag the ball up or down the ramp, guess if it will make the loop, and then watch what happens when you press Go. At the top, gravity and the track must keep the ball moving in a circle, but the track can only push, not pull, so the ball must be fast enough to stay on. A sliding block can turn all its energy into speed, while a rolling ball also spends some energy spinning, so it needs to start higher. That is a bit like a roller coaster, where the shape of the loop helps keep the ride safe and smooth. Try the ball and the block from different heights and see which one makes it round the loop.",
+      "hash": "0c8782f6b1422c1b"
+    },
+    "sv": {
+      "text": "Här kan du se om kulan hinner runt loopen eller släpper banan i toppen. I toppen måste tyngdkraften och banans tryck tillsammans hålla kulan kvar i en cirkel, och banan kan bara trycka, inte dra. Det är lite som när du cyklar fort nog genom en kurva, annars känns det som att du nästan lyfter från vägen. En glidande kloss behöver starta högre än en rullande kula, eftersom kulan också måste använda en del av energin till att snurra. Prova att gissa först, flytta kulan och se hur högt den måste börja för att klara loopen!",
+      "hash": "96a52e6d1e328030"
+    }
+  },
+  "motion-lever": {
+    "en": {
+      "text": "Here you drag the brass pivot sideways and push down on the handle to try to lift the load. If the pivot is close to the car, the load side gets short and your side gets long, so you need less force. That works because the lever balances by trading force for distance, and the total work stays the same. It is like prying up something heavy with a long bar: easier push, but a longer move. Try sliding the pivot until you find the spot where you can lift the car, or the elephant, with your hand.",
+      "hash": "22a9f32e4b401e21"
+    },
+    "sv": {
+      "text": "Här lyfter du en bil med en hand genom att flytta stödet till rätt plats och trycka ner handtaget. En hävstång ger dig större kraft när din del av stången är lång och lastens del är kort. Då behöver du mindre kraft, men i gengäld måste handen röra sig en längre sträcka än bilen, så arbetet blir detsamma. Det är som när du bänder upp något tungt med ett långt spett. Prova att flytta stödet och se var du orkar lyfta bilen, och testa gärna elefanten också.",
+      "hash": "33373977c992d968",
+      "edited": true
+    }
+  },
+  "space-orrery": {
+    "en": {
+      "text": "Here you can watch the planets move around the Sun, and you can slide time or drag Earth to see where they are today. The Sun’s gravity keeps bending each planet’s path, so they keep going round instead of flying off. It is a bit like swinging a ball on a string, where the pull keeps changing its direction. The distances are so huge that the solar system is mostly empty space, even though pictures can make it look crowded. Try dragging Earth along its orbit, then press a planet and see how its real time compares with the others.",
+      "hash": "fcb3531986b96dbf"
+    },
+    "sv": {
+      "text": "Här kan du dra i tiden och se hur hela solsystemet rör sig, med planeternas riktiga tider runt Solen. De går runt Solen för att Solens gravitation hela tiden böjer av deras färd, och längre ut blir draget svagare så banan tar längre tid. Det är lite som när små saker kan ligga långt ifrån varandra i en stor tom hall, fast här är nästan hela solsystemet tomrum. I böcker kan planeterna se tätt packade ut, men här ser du bättre hur långt det egentligen är mellan dem. Prova att dra Jorden runt sin bana och jämför med de andra planeterna, eller testa sann skala och se hur långt bort Neptunus hamnar.",
+      "hash": "91cd6e6d31635c5f"
+    }
+  },
+  "space-weight": {
+    "en": {
+      "text": "You set your mass, choose a world, and press Jump to see how the same jump would look on nine worlds. Your mass stays the same everywhere, but weight changes because each world pulls on you with a different strength. That is why you would weigh less on the Moon and much more on Jupiter, while a scale can still show kilograms as if you were on Earth. It is a bit like carrying the same backpack up a hill that is steeper or gentler. Try the same jump on the Moon and Jupiter and see which one sends you higher.",
+      "hash": "6fe057e5a07bea07"
+    },
+    "sv": {
+      "text": "Här kan du ställa in din massa och prova hur mycket du skulle väga på olika världar, eller hoppa och se samma hopp på nio platser. Det beror på att din massa är densamma överallt, men tyngden ändras när gravitationen drar olika starkt. Vågen mäter kraft, men visar ändå kilogram som om du stod på Jorden. Det är därför ett hopp som blir 40 centimeter här kan bli 2,4 meter på Månen. Prova att välja en värld och se hur siffran förändras när du trycker på Hoppa.",
+      "hash": "e9e8e01876cb1da6"
+    }
+  },
+  "space-moon-phases": {
+    "en": {
+      "text": "Here you can drag the Moon around Earth or press Play, and you watch how it looks from Earth. The Sun always lights up half of the Moon, and you see different amounts of that bright half as the Moon moves around Earth. That is why the Moon seems to change shape over a month, from new moon to new moon in about 29.5 days. It is a bit like walking around a lamp and noticing how much of a ball is lit from where you stand. Try moving the Moon and watch the porthole carefully to see the phases change.",
+      "hash": "9aa4780190ca5c72"
+    },
+    "sv": {
+      "text": "Här kan du dra Månen runt Jorden och se hur den ser ut från oss på Jorden. Solen lyser alltid upp exakt halva Månen, och när vinkeln mellan Solen och Månen ändras ser vi olika mycket av den ljusa sidan. Det är därför Månen kan se ut som en smal skära, halv eller nästan helt rund under en månad. Det är lite som när du ser en boll i ljuset från en lampa och bara en del av den lyser upp mot dig. Prova att dra Månen runt och se om du kan hitta tilltagande måne med ljus på höger sida.",
+      "hash": "e8e4d437bebc9837"
+    }
+  },
+  "space-gravity-well": {
+    "sv": {
+      "text": "Här kan du ge kulan en knuff och se om den faller rakt ner eller snurrar runt mitten. Det händer för att lutningen blir brantare när du kommer närmare mitten, så dragningen dit växer, precis som gravitationen. Om kulan får fart åt sidan hela tiden missar den mitten och blir kvar i en omloppsbana. Det är som när något kastas så att det hela tiden faller men ändå hinner runt, ungefär som planeter som rör sig länge i rymden. Prova en knuff rakt in och sedan en knuff åt sidan, och jämför vad som händer.",
+      "hash": "c51bfd38ac9457f1"
+    },
+    "en": {
+      "text": "Here you can flick a marble on a curved sheet and try to make it circle the centre instead of falling in. That happens because the slope pulls it inward like gravity, and if the marble also has sideways speed, it keeps missing the centre and goes round and round. Friction slows it down, so the marbles spiral inward, but in space there is almost nothing to brake them. It is a bit like Mercury and Earth, where the closer one moves faster. Try a push straight in, then a push sideways, and see which one gives you an orbit.",
+      "hash": "6977e494a1b9f074"
+    }
+  },
+  "space-light-mail": {
+    "en": {
+      "text": "Here you send a light letter from the Sun to a planet, or from Earth to the Moon, and watch how long it takes to arrive. Light is the fastest thing there is, but space is so huge that even light needs time. From the Sun to Earth it takes eight minutes and nineteen seconds, so when we look at the Sun we see it as it was a little over eight minutes ago. To the Moon it takes only 1.3 seconds, but to Neptune more than four hours. Try sending light to different planets and watch the clock while time speeds up.",
+      "hash": "e02a113079b0e79c",
+      "edited": true
+    },
+    "sv": {
+      "text": "Här skickar du ett ljusbrev från Solen till en planet, eller från Jorden till Månen, och ser hur lång tid det tar innan det kommer fram. Ljus är det snabbaste som finns, men rymden är så enorm att även ljuset behöver tid. Från Solen till Jorden tar det åtta minuter och nitton sekunder, så när vi tittar på Solen ser vi hur den såg ut för drygt åtta minuter sedan. Till Månen tar det bara 1,3 sekunder, men till Neptunus mer än fyra timmar. Prova att skicka till olika planeter och titta på klockan när tiden snabbspolas.",
+      "hash": "1d619079c73b927d",
+      "edited": true
+    }
+  },
+  "perception-reaction": {
+    "sv": {
+      "text": "Här väntar du på grönt och trycker så fort du kan, fem försök per omgång. När lampan tänds fångar tapparna i näthinnan ljuset och skickar en signal via synnerven till hjärnans syncentrum. Hjärnan bestämmer sig och skickar en order genom nerverna till handens muskler. Varje steg tar bara några tiotals millisekunder, men tillsammans blir det ungefär 200 till 250 millisekunder för en ljussignal. Det är därför en bil i 100 kilometer i timmen hinner rulla drygt sex meter innan föraren ens börjar bromsa. Prova att trycka direkt när det blir grönt och se om du blir snabbare för varje försök.",
+      "hash": "8e25370f1d1ade03",
+      "edited": true
+    },
+    "en": {
+      "text": "Here you wait for green and press as fast as you can, five tries per round. When the lamp lights up, the cones in your eye catch the light and send a signal along the optic nerve to your brain. Your brain decides, then sends an order through your nerves to the muscles in your hand. Each step takes only a few tens of milliseconds, but together they add up to about two hundred to two hundred and fifty milliseconds for a light signal. Try five times and see if you can beat your best time.",
+      "hash": "8b5632e9c4d802e4",
+      "edited": true
+    }
+  },
+  "perception-ames": {
+    "en": {
+      "text": "You look through one peephole and compare the robots, and one seems huge while the other looks tiny. The room is really slanted, built so that its corners line up with your sight lines just like a normal room would, and your brain trusts its habit of seeing rectangular rooms. That is why the robot in the far corner covers a smaller angle and seems smaller. It is a bit like someone seeming to shrink as they walk across a strangely shaped room. Now try swapping the robots, then press Walk around to see the trick.",
+      "hash": "243038ce8c4739d2",
+      "edited": true
+    },
+    "sv": {
+      "text": "Här ser du två robotar som verkar vara olika stora fast de är exakt lika. Rummet är inte rätvinkligt utan snedbyggt, så att bilden på din näthinna blir precis som i ett vanligt rum. Hjärnan är van vid rätvinkliga rum och väljer den tolkningen, så roboten i det bortre hörnet ser mycket mindre ut. Det är lite som när någon verkar krympa när den går tvärs över rummet, fast det egentligen är rummet som lurar dig. Prova att byta plats på robotarna och gå sedan runt och titta, så avslöjas tricket.",
+      "hash": "b214b395a46550d6",
+      "edited": true
+    }
+  },
+  "perception-afterimage": {
+    "en": {
+      "text": "Here, you stare at the black dot while the flag changes, and then you may see the wrong colours in your mind. That happens because the cones in your retina that catch the orange light get tired for a few seconds, and your eye and brain compare colours in opposite pairs. When you look at white, the tired cones answer less strongly, so the balance flips and orange can look blue while dark blue can look yellow. A little like seeing an afterimage after staring at a bright colour, it fades after a few seconds as the cones recover. Try keeping your eyes on the dot and see how the flag seems to change size when you look farther away.",
+      "hash": "3e3a1ed9a79fc18f"
+    },
+    "sv": {
+      "text": "Här stirrar du på den svarta pricken tills skärmen blir vit, och då kan färgerna se helt fel ut en stund. Det händer för att tapparna i näthinnan blir trötta av orange ljus, och hjärnan jämför sedan färger i par som blått mot gult och rött mot grönt. När du sedan tittar på vitt svarar de trötta tapparna svagare, så det orangea kan upplevas som blått och det mörkblå som gult. Det är lite som när du har tittat länge på något starkt och sedan ser dess motsats en kort stund. Prova själv att hålla blicken stilla på pricken och se hur efterbilden följer med när du tittar längre bort.",
+      "hash": "159dd4c719c0a2c0"
+    }
+  },
+  "perception-blindspot": {
+    "en": {
+      "text": "You can find a hidden hole in your vision here by closing one eye and looking at the cross while you move your head back and forth. It happens because one small patch in each eye has no cones or rods where the optic nerve and blood vessels leave the eye, so that spot cannot see. You do not notice it because the other eye covers for it and your brain fills in the missing part. That is why a broken line can look whole. Try to make the dot disappear, then watch it come back as you move.",
+      "hash": "c283d8c4670b3452"
+    },
+    "sv": {
+      "text": "När du blundar med vänster öga och tittar på krysset kan pricken försvinna. Det händer där synnerven och blodkärlen lämnar ögat, på en liten fläck utan tappar och stavar. Där finns alltså inga celler som kan se, men det andra ögat och hjärnan fyller i det som saknas. Det är därför en bruten linje ändå kan se hel ut. Prova att flytta huvudet långsamt fram och tillbaka och hitta läget där pricken försvinner.",
+      "hash": "496e8e831123b004",
+      "edited": true
+    }
+  },
+  "perception-illusions": {
+    "en": {
+      "text": "Here you see three pictures that make your brain guess wrong on purpose. Your brain does not measure light and length like a ruler. It uses quick guesses based on what is usually true, so it can be fooled by shadows, nearby shapes, and the objects around a line or a circle. That is why two grey squares can look different, or one line can seem longer than another. It is a bit like judging how big something is by the people standing next to it. Try the checkerboard, drag the lines, and click the circles to see how your own guesses change.",
+      "hash": "90fe92d40df3f626"
+    },
+    "sv": {
+      "text": "Här lurar bilderna din hjärna att gissa fel med flit. Den mäter inte ljus och längder som en linjal, utan tolkar vad som finns där ute utifrån vad som brukar stämma. I schackbrädet är A och B exakt samma grå, men skugga och grannrutor får dem att se olika ut. Det är lite som när du bedömer något efter vad som står runt omkring det. Prova att klicka på cirklarna, dra i linjerna och öppna bilderna i helskärm för att se om du kan lura hjärnan tillbaka.",
+      "hash": "c851a928dc515483"
+    }
+  },
+  "chem-flame": {
+    "en": {
+      "text": "When you dip a salt into the flame, its atoms send out light in special coloured lines. The heat pushes electrons up to higher energy levels, and when they fall back, they give off light with the exact energy they lost. That is why each element has its own pattern, like a fingerprint. It is a bit like fireworks, where different salts make red, green, or blue colours. Try another salt, compare the spectral lines, and see what the cobalt glass changes in the mixture.",
+      "hash": "5dc3e94244d0e643"
+    },
+    "sv": {
+      "text": "När du doppar öglan i ett salt och för in den i lågan, lyser olika ämnen i egna färger och ger sina egna spektrallinjer. Det beror på att värmen knuffar upp elektroner i atomerna, och när de faller tillbaka skickar de ut ljus med exakt rätt energi. Varje grundämne har därför ett eget ljusmönster, nästan som ett fingeravtryck. Det är lite som när olika personer har olika röster, fast här är det färger och linjer du ser. Prova att jämföra linjerna från olika salter och testa sedan koboltglaset på blandningen.",
+      "hash": "f18f494a72a412e1"
+    }
+  },
+  "chem-ph": {
+    "en": {
+      "text": "You add red-cabbage juice to everyday liquids and watch them change colour as acids and bases show themselves. That happens because red cabbage has pigments that change shape when they take up or release hydrogen ions, and each shape has its own colour. On the pH scale, every step means ten times more or less hydrogen ions, so lemon juice can be far more acidic than pure water. The same kind of pigment helps make blueberries blue and roses red, and hydrangeas can turn blue or pink depending on the soil. Try adding the juice to a liquid, then neutralise the vinegar in the beaker and follow the pH curve to see when the colour changes.",
+      "hash": "42553535b158d27a"
+    },
+    "sv": {
+      "text": "När du droppar rödkålssaft i proven byter vätskorna färg och visar om de är sura eller basiska. Det händer för att antocyaninerna i rödkål ändrar form när de tar upp eller släpper vätejoner, och varje form har sin egen färg. pH-skalan hoppar också i stora steg, så citronjuice med pH 2 har mycket fler vätejoner än rent vatten med pH 7. Samma färgämne gör blåbär blå och rosor röda, och hortensior kan bli blå eller rosa beroende på jordens pH. Testa att följa pH-kurvan när ättikan neutraliseras och se när färgen börjar ändras.",
+      "hash": "0f0fb641e8aedeb3"
+    }
+  },
+  "chem-states": {
+    "sv": {
+      "text": "Här ser du 256 argonatomer i en låda, och när du vrider upp värmen smälter kristallen och kan sedan koka bort. Temperaturen visar hur snabbt atomerna rör sig i genomsnitt. I fast form sitter atomerna i ett gitter, i vätska glider de förbi varandra och i gas flyger de fritt. Medan ämnet smälter eller kokar går energin åt till att bryta bindningarna i stället för att höja farten, så temperaturen står nästan still en stund, precis som is som ligger kvar på noll grader medan den smälter. Prova att värma jämnt och leta efter de platta delarna i uppvärmningskurvan.",
+      "hash": "1487160fc53c8674",
+      "edited": true
+    },
+    "en": {
+      "text": "You can turn up the heat in a box with 256 argon atoms and watch them change from a crystal to a liquid and then to a gas. That happens because temperature tells you how fast the atoms move on average, and heating adds energy. In a solid they vibrate in a lattice, in a liquid they slide past each other but still stick together, and in a gas they fly freely. When melting or boiling begins, the temperature can level off because the new energy goes into breaking the forces between atoms instead of making them move faster, like ice staying at 0 degrees while it melts. Try changing the temperature slowly and see if you can spot the flat parts in the heating curve.",
+      "hash": "0cc7cb9e2e25caf5"
+    }
+  },
+  "chem-toothpaste": {
+    "en": {
+      "text": "You pour hydrogen peroxide into the dish with a catalyst, and it breaks down fast, making oxygen and a big mountain of warm foam. This happens because the catalyst gives the reaction a shortcut, so the peroxide turns into water and oxygen much more quickly, without the catalyst being used up. Your own body has a similar enzyme, catalase, that breaks down hydrogen peroxide in your cells all the time. Here, the trapped oxygen can even make a glowing splint burst into flame. Try three percent first, and remember that thirty percent is only for adults with safety goggles.",
+      "hash": "9e3e471b7e0e62a2",
+      "edited": true
+    },
+    "sv": {
+      "text": "Här blandar du väteperoxid med en katalysator, och då bildas vatten, syrgas och ett varmt skumberg på bara några sekunder. Det händer för att katalysatorn ger reaktionen en genväg, så den går mycket fortare, men själv förbrukas den inte. Diskmedlet fångar syrgasen i bubblor, och därför blir det massor av skum. Din egen kropp har också ett sådant enzym, katalas, som hela tiden bryter ner väteperoxid i cellerna. Prova tre procent först, och kom ihåg att trettio procent bara är för vuxna med skyddsglasögon. Se sedan vad syrgasen gör med den glödande stickan.",
+      "hash": "57d34ca15eb3dea3",
+      "edited": true
+    }
+  },
+  "chem-periodic": {
+    "en": {
+      "text": "Here you can tap an element to see its atom, then use H, O and C to build molecules in the hologram. Atoms have a tiny center with protons and neutrons, and electrons spread around it in shells, so different elements have different numbers of electrons and outer electrons. That is why atoms with the same kind of outer electrons end up in the same column and act alike, and why they bond by sharing electrons. Think of water and other things around you as being made from these tiny building blocks, just like the elements you see here. Try making a molecule with H, O and C, then see how many bonding arms each atom can use.",
+      "hash": "8c0c66a31e4f5868"
+    },
+    "sv": {
+      "text": "Här kan du klicka på ett grundämne och titta in i dess atom, eller bygga molekyler med väte, syre och kol. En atom har en kärna med protoner och neutroner, och elektroner runt omkring i skal. Ämnen med lika många elektroner i ytterskalet hamnar i samma kolumn och beter sig likt, och atomer binder genom att dela elektroner. Väte har en bindningsarm, syre två och kol fyra, så de kan pusslas ihop på olika sätt. Tänk dig att kärnan är en ärta och att hela atomen vore stor som en fotbollsarena, då ser du hur mycket tomrum det finns. Prova nu att klicka på H, O och C och se vilka molekyler du kan bygga.",
+      "hash": "97ebd81b2d5c276b"
+    }
+  }
+}

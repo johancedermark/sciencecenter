@@ -7,11 +7,22 @@ import { UI, S } from './core/ui';
 import { World, type RegisteredStation } from './core/world';
 import { ATRIUM_SPAWN, ROOM_ORDER, roomSpawn } from './core/layout';
 import { L, getLang, onLangChange, t } from './core/i18n';
-import type { BuddyApi, BuddyController, RoomId } from './core/types';
+import type { BuddyApi, BuddyController, L10n, RoomId, StationDef } from './core/types';
 import { ROOMS, ATRIUM } from './rooms';
 import { Buddy } from './buddy/Buddy';
 import { BuddyVoice } from './voice/BuddyVoice';
 import type { VoiceHost } from './voice/types';
+import explanations from './content/explanations.json';
+
+type ExplanationFile = Record<string, Partial<Record<'sv' | 'en', { text: string }>>>;
+const EXPLAIN = explanations as ExplanationFile;
+
+/** Buddy's spoken explanation for a station: the reviewed text from src/content, else the science text. */
+function explanationOf(def: StationDef): L10n {
+  const e = EXPLAIN[def.id];
+  const fallback = (l: 'sv' | 'en') => [def.science[l], def.wow?.[l]].filter(Boolean).join(' ');
+  return { sv: e?.sv?.text ?? fallback('sv'), en: e?.en?.text ?? fallback('en') };
+}
 
 export class App {
   private engine: Engine;
@@ -27,6 +38,7 @@ export class App {
   private lastArea = '';
   private greeted = new Set<string>();
   private started = false;
+  private explaining = false;
 
   constructor(container: HTMLElement) {
     this.engine = new Engine(container);
@@ -78,6 +90,16 @@ export class App {
         },
         close: () => this.closeStation(),
         stats: () => ({ fps: Math.round(this.engine.fps), ...this.engine.renderer.info.render }),
+        /** Station texts for scripts/gen-explanations.mjs: run copy(gnistan.exportStations()) in the console. */
+        exportStations: () =>
+          JSON.stringify(
+            this.world.stations.map((s) => ({
+              id: s.def.id, room: s.room, title: s.def.title, intro: s.def.intro,
+              howTo: s.def.howTo, science: s.def.science, wow: s.def.wow ?? null,
+            })),
+            null,
+            1,
+          ),
       };
     }
   }
@@ -120,6 +142,7 @@ export class App {
     ui.onTeleport = (id) => void this.goTo(id);
     ui.onExplore = () => this.nearby && this.openStation(this.nearby);
     ui.onBack = () => this.closeStation();
+    ui.onExplain = () => this.toggleExplain();
     ui.onJoystick = (x, y, a) => this.player.setJoystick(x, y, a);
     ui.onTalkToggle = async () => {
       this.sfx.resume();
@@ -192,13 +215,34 @@ export class App {
     s.def.onFocus?.();
     this.buddy.attend(s.world);
     this.buddy.say(s.def.intro, { gesture: 'point', expression: 'idea' });
+    this.voice.prefetch(explanationOf(s.def));
     this.voice.contextChanged();
+  }
+
+  /** The station panel's "Förklara" button: Buddy explains the station, or stops if already explaining. */
+  private toggleExplain() {
+    const s = this.focused;
+    if (!s) return;
+    if (this.explaining) {
+      this.voice.stopSpeaking();
+      return;
+    }
+    this.explaining = true;
+    this.ui.setExplaining(true);
+    this.buddy.attend(s.world);
+    this.buddy.emote('idea', 4000);
+    this.buddy.gesture('point');
+    this.voice.explain(t(s.def.title), t(explanationOf(s.def)), () => {
+      this.explaining = false;
+      this.ui.setExplaining(false);
+    });
   }
 
   private closeStation() {
     const s = this.focused;
     if (!s) return;
     this.focused = null;
+    if (this.explaining) this.voice.stopSpeaking();
     s.def.onBlur?.();
     this.ui.closeStation();
     this.player.unfocus();

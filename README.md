@@ -23,14 +23,15 @@ cp .env.example .env      # add OPENAI_API_KEY to talk to Buddy (optional)
 npm run dev               # web on http://localhost:5180, API on :8790
 ```
 
-Without a key everything works; Buddy then speaks scripted lines with the browser's speech synthesis
+With a key, Buddy's everyday lines and the **Förklara** button on every station use OpenAI text-to-speech
+(cached on disk). Without a key everything still works: Buddy then uses the browser's speech synthesis
 and answers typed questions with a small offline guide.
 
 Production: `npm run build && npm start` (the Hono server serves `dist/` and the API on `PORT`, default 8790).
 
 ### Controls
 - **Desktop:** WASD or the arrow keys to walk, drag to look, click the floor to walk there, click and drag experiments,
-  **E** to explore a station, **M** for the map, **Enter** to type to Buddy, **Esc** to go back.
+  **E** to explore a station, **X** to have Buddy explain it, **M** for the map, **Enter** to type to Buddy, **Esc** to go back.
 - **Touch:** joystick bottom-left, drag to look, tap the floor to walk there, tap or drag experiments.
 - **Deep links:** `?room=space`, `?station=foucault`, add `&go` to skip the start screen.
 

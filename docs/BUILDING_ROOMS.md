@@ -50,6 +50,9 @@ Research with numbers and sources: `docs/research/science-content.md`.
 - Simulations must be physically right (real formulas and constants, numerically stable, frame-rate independent:
   use `dt` and substeps). If you simplify, say so in the science text.
 
+- After adding or changing a station, regenerate its spoken explanation (the Förklara button):
+  see "The Explain button" in `docs/voice.md`. Without one, Buddy reads the `science` text.
+
 ## Look and feel
 - Cozy, warm and lit up: wood, brass, glass, rounded shapes (`RoundedBoxGeometry` from
   `three/addons/geometries/RoundedBoxGeometry.js`), soft warm light pools, and glowing accents.

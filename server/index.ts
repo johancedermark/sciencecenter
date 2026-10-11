@@ -1,6 +1,7 @@
 /**
  * Gnistan API server.
  * - POST /api/realtime-token: mints a short-lived OpenAI Realtime client secret (the API key never reaches the browser).
+ * - POST /api/tts: Buddy's everyday voice (text → cached MP3), see tts.ts.
  * - GET  /api/health
  * - In production, serves the built app from dist/ with an SPA fallback.
  */
@@ -12,6 +13,7 @@ import { serve } from '@hono/node-server';
 import { serveStatic } from '@hono/node-server/serve-static';
 import { getConnInfo } from '@hono/node-server/conninfo';
 import { buildInstructions, buildTools, type Lang, type PersonaRoom, type PersonaStation } from './buddyPersona';
+import { registerTts, TTS_INFO } from './tts';
 
 const MODEL = process.env.REALTIME_MODEL ?? 'gpt-realtime-2.1-mini';
 const VOICE = process.env.REALTIME_VOICE ?? 'marin';
@@ -22,13 +24,35 @@ const hasKey = () => !!process.env.OPENAI_API_KEY?.trim();
 
 const app = new Hono();
 
-app.get('/api/health', (c) => c.json({ ok: true, voice: hasKey(), model: MODEL }));
+app.get('/api/health', (c) => c.json({ ok: true, voice: hasKey(), model: MODEL, tts: hasKey() ? TTS_INFO : null }));
 
 // ------------------------------------------------------------------ rate limit (per IP, sliding window)
 
 const WINDOW_MS = 10 * 60_000;
-const MAX_TOKENS = 10;
-const hits = new Map<string, number[]>();
+
+/** Sliding-window limiter: returns 0 if allowed, else seconds to wait. */
+function makeLimiter(max: number) {
+  const hits = new Map<string, number[]>();
+  setInterval(() => {
+    const now = Date.now();
+    for (const [ip, list] of hits) if (list.every((t) => now - t >= WINDOW_MS)) hits.delete(ip);
+  }, WINDOW_MS).unref();
+  return (ip: string): number => {
+    const now = Date.now();
+    const list = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
+    if (list.length >= max) {
+      hits.set(ip, list);
+      return Math.ceil((list[0] + WINDOW_MS - now) / 1000);
+    }
+    list.push(now);
+    hits.set(ip, list);
+    return 0;
+  };
+}
+
+const rateLimited = makeLimiter(10);
+// Uncached speech lines per IP per 10 min (cached lines are free).
+const ttsLimited = makeLimiter(150);
 
 function clientIp(c: Parameters<typeof getConnInfo>[0]): string {
   // Only trust X-Forwarded-For behind a known proxy (set TRUST_PROXY=1).
@@ -43,22 +67,6 @@ function clientIp(c: Parameters<typeof getConnInfo>[0]): string {
   }
 }
 
-function rateLimited(ip: string): number {
-  const now = Date.now();
-  const list = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
-  if (list.length >= MAX_TOKENS) {
-    hits.set(ip, list);
-    return Math.ceil((list[0] + WINDOW_MS - now) / 1000);
-  }
-  list.push(now);
-  hits.set(ip, list);
-  return 0;
-}
-
-setInterval(() => {
-  const now = Date.now();
-  for (const [ip, list] of hits) if (list.every((t) => now - t >= WINDOW_MS)) hits.delete(ip);
-}, WINDOW_MS).unref();
 
 // ------------------------------------------------------------------ input validation
 
@@ -181,6 +189,8 @@ app.post(
     }
   },
 );
+
+registerTts(app, { hasKey, clientIp: clientIp as (c: never) => string, limiter: ttsLimited });
 
 app.all('/api/*', (c) => c.json({ error: 'not_found' }, 404));
 

@@ -35,3 +35,27 @@ The client sends room and station ids in the token request, so the enums always 
 
 ## Privacy
 In voice mode, the visitor's microphone audio and Buddy's conversation are sent to OpenAI for processing (speech recognition, the model and speech output). Nothing is stored by this server, and the API key never leaves the server. Buddy is instructed not to ask for personal data. Without a key, nothing leaves the browser except the token request that returns `no_key`.
+
+
+## Everyday voice (no conversation running)
+
+Scripted lines (greetings, station intros, the **Förklara/Explain** button) are spoken with OpenAI
+text-to-speech through `POST /api/tts` (`server/tts.ts`): `gpt-4o-mini-tts`, voice `marin` (the same as
+the realtime voice), with style instructions for a warm, playful robot in natural Swedish or English.
+
+- The client (`src/voice/cloudSpeech.ts`) splits text into sentence clips, plays them back to back while
+  prefetching the next one, shows each clip as a subtitle and drives Buddy's mouth from the real audio.
+- Audio is cached on disk in `.cache/tts/` (gitignored) by a hash of model, voice, language, style version
+  and text, so each scripted line is generated once. Only uncached lines count against the per-IP rate limit.
+- Without a key, or if a request fails, Buddy falls back to the browser's speechSynthesis.
+
+## The Explain button
+
+Each station panel has a **Förklara** button (shortcut **X**). Buddy then explains the station:
+- in a live conversation, the realtime model explains it in its own words (so follow-up questions work);
+- otherwise Buddy reads a short spoken explanation from `src/content/explanations.json`.
+
+Those texts are generated from the station texts by `scripts/gen-explanations.mjs` (default model
+`gpt-5.4-mini`) and then reviewed by hand (corrected entries are marked `"edited": true`). After adding
+or changing a station: run `copy(gnistan.exportStations())` in the dev console, save it to a file, run
+`node --env-file=.env scripts/gen-explanations.mjs <file>`, and review the diff.
