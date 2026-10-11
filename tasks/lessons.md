@@ -12,3 +12,7 @@
 - **Companion placement must respect the camera.** Pick slots with a minimum camera distance and inside the frame,
   prefer the side the HUD panel doesn't cover.
 - **Heredocs:** quote them (`<<'EOF'`) when the content has backticks or `$`.
+- **Realtime API: `response.instructions` replaces the session instructions** for that response. Always include
+  the persona and name the language explicitly in response-level instructions.
+- **Secrets:** check where a user puts an API key (here it first landed in the tracked `.env.example`). Keep keys in
+  gitignored `.env` only, and never print them; mask them when inspecting.

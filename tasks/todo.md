@@ -66,8 +66,10 @@ bilingual sv/en UI, desktop + touch controls, deep links. ~29k lines TypeScript,
   Doppler, Lenz tube times, LJ, titration...) and by me (planet gravities).
 
 **Not verified / open**
-- The keyed Realtime path (WebRTC, tools, Swedish voice quality): no OPENAI_API_KEY available. Code follows
-  the GA docs; `tool_choice: 'none'` on narration responses is unconfirmed.
+- Realtime voice verified with a key (headless Chrome, fake mic): token minting, WebRTC connect, Swedish
+  greeting, typed question answered in Swedish, tool calls go_to_room and open_station, narration responses
+  accepted (incl. tool_choice 'none'), clean stop. Fixed: the greeting was English because response-level
+  instructions replace the session's. Still open: real microphone speech and how the Swedish voice sounds.
 - Microphone input in the sound room (no mic headless). Audio was not listened to.
 - Real touch devices (only emulated). Draw calls: some rooms ~150–180 incl. shell.
 

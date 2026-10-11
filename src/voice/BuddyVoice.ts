@@ -219,9 +219,11 @@ export class BuddyVoice implements VoiceApi {
       this.resetTurnState();
       this.sendSessionUpdate();
       this.updateStatus();
+      // Response-level instructions replace the session's, so include the persona and name the language.
+      const greetLang = this.host.lang() === 'sv' ? 'Swedish (svenska)' : 'English';
       this.requestResponse({
         instructions:
-          'Greet the visitor very briefly (one short sentence) in the language from your instructions, ' +
+          `${this.instructions()}\n\n# Right now\nGreet the visitor very briefly (one short sentence) in ${greetLang}, ` +
           'say you are listening, and invite a question about what they see. No tool calls.',
       });
       return true;
