@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#120e18" />
+    <title>Gnistan · Buddys vetenskapscenter</title>
+    <link rel="icon" href="/buddy-hero.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <!-- Start screen -->
+    <section id="start">
+      <div class="start-glow"></div>
+      <div class="start-card">
+        <img class="start-buddy" src="/buddy-hero.png" alt="Buddy" />
+        <div class="start-text">
+          <h1><span class="spark">⚡</span><span data-t="appName">Gnistan</span></h1>
+          <p class="tagline" data-t="tagline"></p>
+          <div class="lang-switch">
+            <button data-lang="sv">Svenska</button>
+            <button data-lang="en">English</button>
+          </div>
+          <div class="load"><div id="load-bar"></div></div>
+          <p class="load-label" data-t="loading"></p>
+          <button id="start-btn" class="big-btn" data-t="start">Kliv in</button>
+          <p id="controls-hint" class="hint"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- In-game HUD -->
+    <section id="ui" class="hidden">
+      <div id="hud-top">
+        <div id="location"><span id="loc-icon">🕰️</span><span id="loc-name"></span></div>
+        <div id="hud-buttons">
+          <button id="btn-map" class="hud-btn wide"><span>🗺️</span> <span data-t="map"></span></button>
+          <div class="lang-switch small">
+            <button data-lang="sv">SV</button>
+            <button data-lang="en">EN</button>
+          </div>
+          <button id="btn-mute" class="hud-btn" data-title="mute">🔊</button>
+          <button id="btn-help" class="hud-btn" data-title="help">?</button>
+        </div>
+      </div>
+
+      <div id="crosshair"></div>
+      <div id="tooltip" class="hidden"></div>
+      <div id="toasts"></div>
+
+      <button id="prompt" class="hidden"><kbd>E</kbd><span data-t="explore"></span>: <strong id="prompt-title"></strong></button>
+
+      <div id="subtitle" class="hidden"><span id="sub-who">Buddy</span><span id="sub-text"></span></div>
+
+      <aside id="station" class="hidden">
+        <header>
+          <button id="station-back" class="back-btn">← <span data-t="back"></span></button>
+          <h2 id="station-title"></h2>
+        </header>
+        <div class="station-scroll">
+          <p id="station-intro" class="intro"></p>
+          <div id="station-controls"></div>
+          <details open>
+            <summary data-t="howTo"></summary>
+            <p id="station-howto"></p>
+          </details>
+          <details>
+            <summary data-t="science"></summary>
+            <p id="station-science"></p>
+          </details>
+          <div id="station-wow-box" class="wow">
+            <strong data-t="wow"></strong>
+            <p id="station-wow"></p>
+          </div>
+        </div>
+      </aside>
+
+      <div id="chat">
+        <form id="chat-form" autocomplete="off">
+          <input id="chat-input" type="text" maxlength="400" />
+        </form>
+        <button id="talk-btn" data-status="off">
+          <span class="talk-face"><img src="/buddy-joy.png" alt="" /></span>
+          <span id="talk-label"></span>
+        </button>
+      </div>
+
+      <div id="joystick"><div id="joy-knob"></div></div>
+
+      <div id="map" class="hidden overlay">
+        <div class="overlay-card map-card">
+          <button id="map-close" class="close-btn" aria-label="close">✕</button>
+          <h2 data-t="mapTitle"></h2>
+          <div class="map-body">
+            <svg id="map-svg" viewBox="0 0 200 200"></svg>
+            <div id="map-grid"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="help" class="hidden overlay">
+        <div class="overlay-card">
+          <button id="help-close" class="close-btn" aria-label="close">✕</button>
+          <h2 data-t="help"></h2>
+          <p id="help-controls"></p>
+        </div>
+      </div>
+    </section>
+
+    <div id="fade"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
