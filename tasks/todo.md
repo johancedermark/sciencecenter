@@ -36,20 +36,38 @@ and can be talked to in real time (Swedish by default, any language) through the
 - [x] Core engine: renderer, bloom, loop, player controller (desktop + touch), collision, interaction
 - [x] World: atrium hub + Foucault pendulum, corridors, 6 room shells, cozy lighting, signage
 - [x] UI: start screen, room menu/teleport, station info panel, language toggle, help
-- [ ] Buddy: procedural 3D model true to the reference, face screen with expressions, animations
+- [x] Buddy: procedural 3D model true to the reference, face screen with expressions, animations
       (idle, walk, wave, point, think, celebrate, talk), follow behaviour
-- [ ] Buddy voice: server token endpoint, WebRTC client, tools, subtitles, lip sync, fallback
-- [ ] Room: Electricity & Energy (crank generator, magnet/coil, solar cell dissection, lemon battery, ...)
-- [ ] Room: Light & Optics
-- [ ] Room: Sound & Waves
-- [ ] Room: Forces & Motion
-- [ ] Room: Space
-- [ ] Room: Brain & Senses (added: research shows it in 9/10 centres)
-- [ ] Room: Chemistry
-- [ ] Atrium: Foucault pendulum, welcome desk, decor
-- [ ] Integration, perf pass (per-room visibility, draw calls), mobile check
-- [ ] Verify in a real browser: desktop and phone width, every station, the menu, Buddy
-- [ ] Docs: README (run, architecture, adding a room), commit and push to feature branch
+- [x] Buddy voice: server token endpoint, WebRTC client, tools, subtitles, lip sync, fallback
+- [x] Room: Electricity & Energy (crank generator, magnet/coil, solar cell dissection, lemon battery, ...)
+- [x] Room: Light & Optics
+- [x] Room: Sound & Waves
+- [x] Room: Forces & Motion
+- [x] Room: Space
+- [x] Room: Brain & Senses (added: research shows it in 9/10 centres)
+- [x] Room: Chemistry
+- [x] Atrium: Foucault pendulum, welcome desk, decor
+- [x] Integration, perf pass (per-room visibility, draw calls), mobile check
+- [x] Verify in a real browser: desktop and phone width, every station, the menu, Buddy
+- [x] Docs: README (run, architecture, adding a room), commit and push to feature branch
 
-## Review
-(filled in at the end)
+## Review (2026-10-11)
+**Delivered:** atrium + 7 themed rooms, 37 stations, procedural 3D Buddy, realtime voice with offline fallback,
+bilingual sv/en UI, desktop + touch controls, deep links. ~29k lines TypeScript, 415 kB gzipped, no asset files.
+
+**Verified**
+- `tsc --noEmit` and `vite build` pass; the production server serves dist and the API (health, 503 no_key).
+- Headless Chrome (GPU) tour: every station opens, is screenshotted, and its on-screen interactives get real
+  mouse clicks/drags. No exceptions, 60 fps.
+- Walking: atrium → corridor → door opens → room → blocked by exhibit colliders; walking back out works;
+  map teleport, language switch, offline chat (teleport/open/explain), no-key toast.
+- Phone (390×844, touch emulation): close-ups pulled back and shifted above the sheet; Ames keeps its peephole.
+- Physics spot checks by builders with scripts (Foucault 12.94°/h, cycloid π√(R/g), Malus, Snell/BK7,
+  Doppler, Lenz tube times, LJ, titration...) and by me (planet gravities).
+
+**Not verified / open**
+- The keyed Realtime path (WebRTC, tools, Swedish voice quality): no OPENAI_API_KEY available. Code follows
+  the GA docs; `tool_choice: 'none'` on narration responses is unconfirmed.
+- Microphone input in the sound room (no mic headless). Audio was not listened to.
+- Real touch devices (only emulated). Draw calls: some rooms ~150–180 incl. shell.
+
