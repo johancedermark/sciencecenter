@@ -61,11 +61,45 @@ export class App {
     this.buddy.placeNear(this.player.position, this.player.yaw);
     this.player.update(0);
     await frame();
-    this.world.prewarm(this.engine.renderer, this.engine.scene, this.engine.camera);
+    await this.world.prewarm(this.engine.renderer, this.engine.scene, this.engine.camera, (f) => this.ui.setLoading(0.6 + 0.39 * f));
     this.ui.setLoading(1);
     this.wire();
     this.engine.onUpdate((dt, time) => this.update(dt, time));
     this.engine.start();
+    this.applyDeepLink();
+    if (import.meta.env.DEV) {
+      (window as unknown as Record<string, unknown>).gnistan = {
+        app: this, engine: this.engine, world: this.world, player: this.player,
+        goTo: (id: RoomId | 'atrium') => this.goTo(id),
+        open: (id: string) => {
+          const s = this.world.stations.find((x) => x.def.id === id);
+          if (s) this.openStation(s);
+          return !!s;
+        },
+        close: () => this.closeStation(),
+        stats: () => ({ fps: Math.round(this.engine.fps), ...this.engine.renderer.info.render }),
+      };
+    }
+  }
+
+  /**
+   * Deep links: `?room=space` starts in a room, `?station=foucault` opens a station,
+   * `&go` skips the start screen (sound then starts on the first click).
+   */
+  private applyDeepLink() {
+    const q = new URLSearchParams(location.search);
+    const room = q.get('room') as RoomId | 'atrium' | null;
+    const station = q.get('station');
+    if (q.has('go')) document.getElementById('start-btn')?.click();
+    const s = station ? this.world.stations.find((x) => x.def.id === station) : null;
+    const target = s ? s.room : room;
+    if (target && (target === 'atrium' || ROOM_ORDER.includes(target))) {
+      const sp = target === 'atrium' ? ATRIUM_SPAWN : roomSpawn(ROOM_ORDER.indexOf(target));
+      this.player.teleport(sp.pos, sp.yaw);
+      this.player.update(0);
+      this.buddy.placeNear(this.player.position, this.player.yaw);
+    }
+    if (s) setTimeout(() => this.openStation(s), 400);
   }
 
   private wire() {
@@ -153,7 +187,7 @@ export class App {
     this.ui.showPrompt(null);
     this.nearby = null;
     this.sfx.whoosh();
-    this.player.focusOn(s.viewPos, s.viewTarget);
+    this.player.focusOn(s.viewPos, s.viewTarget, s.def.fixedViewpoint);
     this.ui.openStation(s.def);
     s.def.onFocus?.();
     this.buddy.attend(s.world);
@@ -200,6 +234,7 @@ export class App {
         return parts.join(' ');
       },
       focusedStationText: () => (this.focused ? stationText(this.focused) : null),
+      focusedStationScience: () => (this.focused ? t(this.focused.def.science) : null),
       rooms: () => [
         { id: 'atrium' as const, title: t(S.atrium) },
         ...this.world.roomDefs().map((r) => ({ id: r.id, title: t(r.title) })),

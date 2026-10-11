@@ -26,7 +26,7 @@ export class Engine {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, isTouch ? 1.5 : 1.75));
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.05;
+    this.renderer.toneMappingExposure = 0.95;
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.shadowMap.enabled = false;
     this.renderer.domElement.id = 'scene';
@@ -39,12 +39,12 @@ export class Engine {
     // Soft image-based lighting gives the PBR materials their cozy sheen.
     const pmrem = new THREE.PMREMGenerator(this.renderer);
     this.scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-    this.scene.environmentIntensity = 0.35;
+    this.scene.environmentIntensity = 0.25;
 
     this.composer = new EffectComposer(this.renderer);
     this.composer.addPass(new RenderPass(this.scene, this.camera));
     const res = new THREE.Vector2(window.innerWidth, window.innerHeight).multiplyScalar(0.5);
-    this.bloom = new UnrealBloomPass(res, 0.55, 0.55, 0.82);
+    this.bloom = new UnrealBloomPass(res, 0.5, 0.45, 0.9);
     this.composer.addPass(this.bloom);
     this.composer.addPass(new OutputPass());
 

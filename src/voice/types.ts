@@ -15,6 +15,8 @@ export interface VoiceHost {
   describeContext(): string;
   /** Full science text of the focused station, if any (current language). */
   focusedStationText(): string | null;
+  /** Optional: only the science explanation of the focused station (used by the offline "what is this?" reply). */
+  focusedStationScience?(): string | null;
   rooms(): { id: RoomId | 'atrium'; title: string }[];
   stations(): StationSummary[];
   /** Tool actions. Return a short result string for the model. */

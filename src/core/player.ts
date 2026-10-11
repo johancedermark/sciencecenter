@@ -82,20 +82,56 @@ export class Player {
     this.walkTarget = null;
     this.focus = null;
     this.returnFrom = null;
+    if (this.camera.view?.enabled) this.camera.clearViewOffset();
   }
 
   /** Glide the camera to a close-up. World space. */
-  focusOn(pos: THREE.Vector3, target: THREE.Vector3) {
+  focusOn(pos: THREE.Vector3, target: THREE.Vector3, fixed = false) {
     this.walkTarget = null;
     this.focus = {
       from: this.camera.position.clone(),
       fromQ: this.camera.quaternion.clone(),
-      pos: pos.clone(),
+      pos: fixed ? pos.clone() : this.fitViewpoint(pos, target),
       target: target.clone(),
       t: 0,
       yawOff: 0,
       pitchOff: 0,
     };
+  }
+
+  /**
+   * Viewpoints are authored for a landscape screen. On narrow (portrait) screens the horizontal field of
+   * view is much smaller, so pull the camera back along the view line, but never through a wall.
+   */
+  private fitViewpoint(pos: THREE.Vector3, target: THREE.Vector3): THREE.Vector3 {
+    const halfH = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2)) * this.camera.aspect;
+    const k = Math.min(2.2, Math.max(1, 0.75 / halfH));
+    if (k <= 1.01) return pos.clone();
+    const dir = new THREE.Vector3().subVectors(pos, target);
+    const want = target.clone().addScaledVector(dir, k);
+    // Stop 0.35 m before the first wall between the original viewpoint and the pulled-back one.
+    let tMax = 1;
+    for (const sg of this.collision.segments) {
+      const t = segHit(pos.x, pos.z, want.x, want.z, sg.ax, sg.az, sg.bx, sg.bz);
+      if (t !== null) tMax = Math.min(tMax, t);
+    }
+    const len = pos.distanceTo(want);
+    const tSafe = len > 0 ? Math.max(0, tMax - 0.35 / len) : 0;
+    return pos.clone().lerp(want, tSafe);
+  }
+
+  /** On narrow screens the station sheet covers the bottom half: shift the image up while focused. */
+  private applyViewShift(amount: number) {
+    const cam = this.camera;
+    const narrow = window.innerWidth < 760;
+    const shift = narrow ? amount * 0.25 : 0;
+    if (shift > 0.001) {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      cam.setViewOffset(w, h, 0, h * shift, w, h);
+    } else if (cam.view?.enabled) {
+      cam.clearViewOffset();
+    }
   }
 
   /** Leave the close-up and glide back into the visitor's head. */
@@ -212,6 +248,7 @@ export class Player {
       const r = this.returnFrom;
       r.t = Math.min(1, r.t + dt / 0.7);
       const k = ease(r.t);
+      this.applyViewShift(1 - k);
       cam.position.lerpVectors(r.pos, eyePos, k);
       cam.quaternion.slerpQuaternions(r.q, q, k);
       if (r.t >= 1) this.returnFrom = null;
@@ -231,6 +268,7 @@ export class Player {
     q.multiply(off);
     this.camera.position.lerpVectors(f.from, f.pos, k);
     this.camera.quaternion.slerpQuaternions(f.fromQ, q, k);
+    this.applyViewShift(k);
   }
 
   /** Forward direction on the floor plane. */
@@ -245,7 +283,18 @@ function clamp(v: number, a: number, b: number) {
 function ease(t: number) {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
+/** Intersection parameter t∈[0,1] along p→q with segment a→b, or null. */
+function segHit(px: number, pz: number, qx: number, qz: number, ax: number, az: number, bx: number, bz: number): number | null {
+  const rx = qx - px, rz = qz - pz, sx = bx - ax, sz = bz - az;
+  const den = rx * sz - rz * sx;
+  if (Math.abs(den) < 1e-9) return null;
+  const t = ((ax - px) * sz - (az - pz) * sx) / den;
+  const u = ((ax - px) * rz - (az - pz) * rx) / den;
+  return t >= 0 && t <= 1 && u >= 0 && u <= 1 ? t : null;
+}
+
 export function wrapAngle(a: number) {
+  if (!Number.isFinite(a)) return 0;
   while (a > Math.PI) a -= Math.PI * 2;
   while (a < -Math.PI) a += Math.PI * 2;
   return a;

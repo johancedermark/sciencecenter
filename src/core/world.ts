@@ -63,7 +63,7 @@ export class World {
     scene.add(this.root);
     this.root.add(this.atrium);
     // Constant base light so shader light counts never change (no recompiles).
-    const hemi = new THREE.HemisphereLight(0xffe2c4, 0x2a1e30, 0.9);
+    const hemi = new THREE.HemisphereLight(0xffd8b4, 0x2a1a24, 0.5);
     scene.add(hemi);
     for (let i = 0; i < RIG_SIZE; i++) {
       const l = new THREE.PointLight(0xffd9a8, 0, 14, 1.6);
@@ -88,10 +88,14 @@ export class World {
     const ctx = this.makeContext('atrium', this.atrium, 0xffc070, this.atriumAnchors, {
       width: ATRIUM_R * 2, depth: ATRIUM_R * 2, height: ATRIUM_H,
     });
+    let t0 = performance.now();
     this.atriumInstance = atriumDef.build(ctx);
+    if (import.meta.env.DEV) console.info(`[world] built atrium in ${Math.round(performance.now() - t0)} ms`);
     this.slots.forEach((s) => {
       const ctx = this.makeContext(s.def.id, s.group, s.def.accent, s.anchors, ROOM);
+      t0 = performance.now();
       s.instance = s.def.build(ctx);
+      if (import.meta.env.DEV) console.info(`[world] built ${s.def.id} in ${Math.round(performance.now() - t0)} ms`);
     });
   }
 
@@ -158,7 +162,7 @@ export class World {
 
   private mats = {
     wood: new THREE.MeshStandardMaterial({ map: woodFloor([10, 10]), roughness: 0.55, metalness: 0.0 }),
-    plaster: new THREE.MeshStandardMaterial({ map: plaster('#ece2d4', [6, 1]), roughness: 0.92, side: THREE.DoubleSide }),
+    plaster: new THREE.MeshStandardMaterial({ map: plaster('#d9c7b0', [6, 1]), roughness: 0.92, side: THREE.DoubleSide }),
     darkWood: new THREE.MeshStandardMaterial({ color: 0x4a2e1d, roughness: 0.6 }),
     ceiling: new THREE.MeshStandardMaterial({ color: 0x2b2330, roughness: 0.95, side: THREE.DoubleSide }),
     brass: new THREE.MeshStandardMaterial({ color: 0xc89b54, roughness: 0.3, metalness: 0.9 }),
@@ -338,7 +342,8 @@ export class World {
 
     // ---- neon sign above the corridor mouth in the atrium
     const sign = this.neonSign(() => `${def.icon}  ${t(def.title)}`, def.accent, 5.2, 1.0);
-    const sr = ATRIUM_R - 0.08;
+    // Flat sign in front of a curved wall: inset by the arc's sagitta so the corners don't clip.
+    const sr = ATRIUM_R - (5.2 * 5.2) / (8 * ATRIUM_R) - 0.06;
     sign.position.set(dx * sr, CORRIDOR_H + 0.9, dz * sr);
     sign.rotation.y = yaw;
     this.atrium.add(sign);
@@ -386,7 +391,7 @@ export class World {
     group.add(rug);
 
     const wallMat = new THREE.MeshStandardMaterial({
-      map: plaster(`#${new THREE.Color(0xeee3d3).lerp(accent, 0.12).getHexString()}`, [4, 1]),
+      map: plaster(`#${new THREE.Color(0xd9c7b0).lerp(accent, 0.1).getHexString()}`, [4, 1]),
       roughness: 0.92,
       side: THREE.DoubleSide,
     });
@@ -606,10 +611,17 @@ export class World {
   }
 
   /** Show everything once so the GPU compiles all shaders before the visitor starts walking. */
-  prewarm(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.Camera) {
-    const prev = this.slots.map((s) => s.group.visible);
-    this.slots.forEach((s) => (s.group.visible = true));
-    renderer.compile(scene, camera);
-    this.slots.forEach((s, i) => (s.group.visible = prev[i]));
+  async prewarm(renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.Camera, onProgress?: (f: number) => void) {
+    // Compile area by area with the async (parallel) compiler so the page never blocks for long.
+    const groups = [this.atrium, ...this.slots.map((s) => s.group)];
+    const prev = groups.map((g) => g.visible);
+    for (let i = 0; i < groups.length; i++) {
+      groups.forEach((g, j) => (g.visible = i === j));
+      const t0 = performance.now();
+      await renderer.compileAsync(scene, camera);
+      if (import.meta.env.DEV) console.info(`[world] compiled ${groups[i].name || 'atrium'} in ${Math.round(performance.now() - t0)} ms, programs: ${renderer.info.programs?.length}`);
+      onProgress?.((i + 1) / groups.length);
+    }
+    groups.forEach((g, j) => (g.visible = prev[j]));
   }
 }

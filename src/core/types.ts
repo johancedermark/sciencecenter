@@ -30,6 +30,8 @@ export interface StationDef {
   position: [number, number];
   /** Close-up camera used while the station is focused. */
   viewpoint: Viewpoint;
+  /** Keep the exact viewpoint on narrow screens (e.g. a peephole); by default it's pulled back to fit. */
+  fixedViewpoint?: boolean;
   /** One or two sentence hook that Buddy says when you start the station. */
   intro: L10n;
   /** What to do, short and imperative. */

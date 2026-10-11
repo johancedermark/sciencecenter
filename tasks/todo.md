@@ -11,6 +11,7 @@ and can be talked to in real time (Swedish by default, any language) through the
 - **Vite + TypeScript + Three.js** (vanilla, r186). Three.js has the largest ecosystem and runs in any
   browser; game engines (Babylon, Unity WebGL) add weight without a clear benefit for this scope.
 - Post-processing: three/addons `EffectComposer` + `UnrealBloomPass` for the glowing, cozy look.
+- Layout: 7 rooms around a round atrium (perception added after research).
 - Collision: 2D circle-vs-segment against wall segments (rooms are flat, so no physics engine is needed).
 - Experiments: custom, analytically or numerically correct simulations (no physics-engine fakery).
 - Sound: WebAudio, synthesized (no asset files).
@@ -29,12 +30,12 @@ and can be talked to in real time (Swedish by default, any language) through the
 - `src/core/sfx.ts`: synthesized sound helpers
 
 ## Checklist
-- [ ] Research: science-center themes and exhibit physics (`docs/research/science-content.md`)
-- [ ] Research: Realtime API (model id, client secrets, WebRTC, tools)
-- [ ] Scaffold: Vite/TS/Three, Hono server, scripts, .env.example
-- [ ] Core engine: renderer, bloom, loop, player controller (desktop + touch), collision, interaction
-- [ ] World: atrium hub + Foucault pendulum, corridors, 6 room shells, cozy lighting, signage
-- [ ] UI: start screen, room menu/teleport, station info panel, language toggle, help
+- [x] Research: science-center themes and exhibit physics (`docs/research/science-content.md`)
+- [x] Research: Realtime API (model id, client secrets, WebRTC, tools)
+- [x] Scaffold: Vite/TS/Three, Hono server, scripts, .env.example
+- [x] Core engine: renderer, bloom, loop, player controller (desktop + touch), collision, interaction
+- [x] World: atrium hub + Foucault pendulum, corridors, 6 room shells, cozy lighting, signage
+- [x] UI: start screen, room menu/teleport, station info panel, language toggle, help
 - [ ] Buddy: procedural 3D model true to the reference, face screen with expressions, animations
       (idle, walk, wave, point, think, celebrate, talk), follow behaviour
 - [ ] Buddy voice: server token endpoint, WebRTC client, tools, subtitles, lip sync, fallback
@@ -43,7 +44,9 @@ and can be talked to in real time (Swedish by default, any language) through the
 - [ ] Room: Sound & Waves
 - [ ] Room: Forces & Motion
 - [ ] Room: Space
+- [ ] Room: Brain & Senses (added: research shows it in 9/10 centres)
 - [ ] Room: Chemistry
+- [ ] Atrium: Foucault pendulum, welcome desk, decor
 - [ ] Integration, perf pass (per-room visibility, draw calls), mobile check
 - [ ] Verify in a real browser: desktop and phone width, every station, the menu, Buddy
 - [ ] Docs: README (run, architecture, adding a room), commit and push to feature branch
